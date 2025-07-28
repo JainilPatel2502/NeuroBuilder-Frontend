@@ -25,9 +25,9 @@ function Layer({
     const x = e.clientX;
     const y = e.clientY;
 
-    // Ensure the menu doesn't go off-screen
-    const menuWidth = 200; // Approximate width of context menu
-    const menuHeight = 300; // Approximate height of context menu
+    // Ensure the menu doesn't go off-screen (updated for smaller menu)
+    const menuWidth = 160; // Updated for smaller menu
+    const menuHeight = 220; // Updated for smaller menu
 
     const adjustedX = x + menuWidth > window.innerWidth ? x - menuWidth : x;
     const adjustedY = y + menuHeight > window.innerHeight ? y - menuHeight : y;

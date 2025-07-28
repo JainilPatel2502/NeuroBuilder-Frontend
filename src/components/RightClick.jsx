@@ -10,27 +10,92 @@ function RightClick({
 
   return (
     <div
-      className="bg-white border border-gray-300 rounded-md shadow-lg z-50"
+      className="bg-slate-900 border border-slate-700 rounded-md shadow-xl z-50 backdrop-blur-sm"
       style={{
         position: "fixed",
         left: menuPosition.x,
         top: menuPosition.y,
-        minWidth: "200px",
+        minWidth: "160px",
       }}
     >
-      <ul style={{ listStyleType: "none", margin: 0, padding: "5px" }}>
-        <li onClick={() => setActivationFunction("None")}>None</li>
-        <li onClick={() => setActivationFunction("Sigmoid")}>Sigmoid</li>
-        <li onClick={() => setActivationFunction("ReLU")}>ReLU</li>
-        <li onClick={() => setActivationFunction("PReLU")}>PReLU</li>
-        <li onClick={() => setActivationFunction("ELU")}>ELU</li>
-        <li onClick={() => setActivationFunction("TanH")}>TanH</li>
-        <li onClick={() => setActivationFunction("Softmax")}>Softmax</li>
-        <li onClick={() => setActivationFunction("Swish")}>Swish</li>
-        <li onClick={() => setActivationFunction("LeakyReLU")}>LeakyReLU</li>
-        <li onClick={() => setInitialization("he")}>He Normalization</li>
-        <li onClick={() => setInitialization("xavier")}>Xavier</li>
-      </ul>
+      <div className="p-1">
+        <div className="text-xs font-medium text-slate-400 px-2 py-1 border-b border-slate-700">
+          Activation Functions
+        </div>
+        <ul className="py-1">
+          <li
+            onClick={() => setActivationFunction("None")}
+            className="px-2 py-1 text-slate-300 hover:bg-slate-800 hover:text-white cursor-pointer transition-colors text-xs"
+          >
+            None
+          </li>
+          <li
+            onClick={() => setActivationFunction("Sigmoid")}
+            className="px-2 py-1 text-slate-300 hover:bg-slate-800 hover:text-white cursor-pointer transition-colors text-xs"
+          >
+            Sigmoid
+          </li>
+          <li
+            onClick={() => setActivationFunction("ReLU")}
+            className="px-2 py-1 text-slate-300 hover:bg-slate-800 hover:text-white cursor-pointer transition-colors text-xs"
+          >
+            ReLU
+          </li>
+          <li
+            onClick={() => setActivationFunction("PReLU")}
+            className="px-2 py-1 text-slate-300 hover:bg-slate-800 hover:text-white cursor-pointer transition-colors text-xs"
+          >
+            PReLU
+          </li>
+          <li
+            onClick={() => setActivationFunction("ELU")}
+            className="px-2 py-1 text-slate-300 hover:bg-slate-800 hover:text-white cursor-pointer transition-colors text-xs"
+          >
+            ELU
+          </li>
+          <li
+            onClick={() => setActivationFunction("TanH")}
+            className="px-2 py-1 text-slate-300 hover:bg-slate-800 hover:text-white cursor-pointer transition-colors text-xs"
+          >
+            TanH
+          </li>
+          <li
+            onClick={() => setActivationFunction("Softmax")}
+            className="px-2 py-1 text-slate-300 hover:bg-slate-800 hover:text-white cursor-pointer transition-colors text-xs"
+          >
+            Softmax
+          </li>
+          <li
+            onClick={() => setActivationFunction("Swish")}
+            className="px-2 py-1 text-slate-300 hover:bg-slate-800 hover:text-white cursor-pointer transition-colors text-xs"
+          >
+            Swish
+          </li>
+          <li
+            onClick={() => setActivationFunction("LeakyReLU")}
+            className="px-2 py-1 text-slate-300 hover:bg-slate-800 hover:text-white cursor-pointer transition-colors text-xs"
+          >
+            LeakyReLU
+          </li>
+        </ul>
+        <div className="text-xs font-medium text-slate-400 px-2 py-1 border-b border-slate-700">
+          Weight Initialization
+        </div>
+        <ul className="py-1">
+          <li
+            onClick={() => setInitialization("he")}
+            className="px-2 py-1 text-slate-300 hover:bg-slate-800 hover:text-white cursor-pointer transition-colors text-xs"
+          >
+            He Normalization
+          </li>
+          <li
+            onClick={() => setInitialization("xavier")}
+            className="px-2 py-1 text-slate-300 hover:bg-slate-800 hover:text-white cursor-pointer transition-colors text-xs"
+          >
+            Xavier
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
