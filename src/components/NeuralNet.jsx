@@ -18,22 +18,35 @@ function NeuralNet({
     const updateConnections = () => {
       const layers = document.querySelectorAll(".lay");
 
+      if (layers.length < 2) return; // Need at least 2 layers for connections
+
       let newConnections = [];
       for (let i = 0; i < layers.length - 1; i++) {
         const currentLayer = layers[i];
         const nextLayer = layers[i + 1];
-        const currentNeurons = currentLayer.querySelectorAll(".fl");
-        const nextNeurons = nextLayer.querySelectorAll(".fl");
+        const currentNeurons = currentLayer.querySelectorAll(".neuron");
+        const nextNeurons = nextLayer.querySelectorAll(".neuron");
 
         currentNeurons.forEach((currNeuron) => {
           const currentRect = currNeuron.getBoundingClientRect();
-          const currentX = currentRect.left + currentRect.width / 2;
-          const currentY = currentRect.top + currentRect.height / 2;
+          const containerRect = document
+            .querySelector(".container")
+            .getBoundingClientRect();
+
+          // Calculate relative position to the container
+          const currentX =
+            currentRect.left - containerRect.left + currentRect.width / 2;
+          const currentY =
+            currentRect.top - containerRect.top + currentRect.height / 2;
 
           nextNeurons.forEach((nextNeuron) => {
             const nextRect = nextNeuron.getBoundingClientRect();
-            const nextX = nextRect.left + nextRect.width / 2;
-            const nextY = nextRect.top + nextRect.height / 2;
+
+            // Calculate relative position to the container
+            const nextX =
+              nextRect.left - containerRect.left + nextRect.width / 2;
+            const nextY =
+              nextRect.top - containerRect.top + nextRect.height / 2;
 
             newConnections.push({
               x1: currentX,
@@ -48,9 +61,32 @@ function NeuralNet({
       setConnections(newConnections);
     };
 
-    const timeoutId = setTimeout(updateConnections, 10);
+    // Use a longer timeout to ensure DOM is fully rendered
+    const timeoutId = setTimeout(updateConnections, 100);
 
-    return () => clearTimeout(timeoutId);
+    // Also update on window resize and scroll
+    const handleResize = () => {
+      setTimeout(updateConnections, 100);
+    };
+
+    const handleScroll = () => {
+      setTimeout(updateConnections, 50);
+    };
+
+    const container = document.querySelector(".container");
+
+    window.addEventListener("resize", handleResize);
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", handleResize);
+      if (container) {
+        container.removeEventListener("scroll", handleScroll);
+      }
+    };
   }, [maxNeuron, layer, neuronsPerLayer]);
 
   return (

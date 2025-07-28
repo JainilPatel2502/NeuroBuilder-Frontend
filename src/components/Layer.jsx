@@ -20,7 +20,19 @@ function Layer({
 
   const handleRightClick = (e) => {
     e.preventDefault();
-    setMenuPosition({ x: e.pageX, y: e.pageY });
+
+    // Calculate position relative to the viewport
+    const x = e.clientX;
+    const y = e.clientY;
+
+    // Ensure the menu doesn't go off-screen
+    const menuWidth = 200; // Approximate width of context menu
+    const menuHeight = 300; // Approximate height of context menu
+
+    const adjustedX = x + menuWidth > window.innerWidth ? x - menuWidth : x;
+    const adjustedY = y + menuHeight > window.innerHeight ? y - menuHeight : y;
+
+    setMenuPosition({ x: adjustedX, y: adjustedY });
     setShowMenu(true);
   };
   const handleClick = () => {

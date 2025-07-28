@@ -8,18 +8,16 @@ function RightClick({
 }) {
   if (!showMenu) return null;
 
-  const style = {
-    position: "absolute",
-    top: menuPosition.y,
-    left: menuPosition.x,
-    backgroundColor: "#f2f2f2",
-    border: "1px solid gray",
-    boxShadow: "2px 2px 5px rgba(0,0,0,0.2)",
-    zIndex: 1000,
-  };
-
   return (
-    <div style={style}>
+    <div
+      className="bg-white border border-gray-300 rounded-md shadow-lg z-50"
+      style={{
+        position: "fixed",
+        left: menuPosition.x,
+        top: menuPosition.y,
+        minWidth: "200px",
+      }}
+    >
       <ul style={{ listStyleType: "none", margin: 0, padding: "5px" }}>
         <li onClick={() => setActivationFunction("None")}>None</li>
         <li onClick={() => setActivationFunction("Sigmoid")}>Sigmoid</li>

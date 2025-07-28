@@ -70,7 +70,7 @@ function NNProvider({ children }) {
       });
 
       const data = await res.json();
-      console.log("✅ Server response:", data);
+      setLogs((prev) => [...prev, data.model]);
     } catch (error) {
       console.error("❌ Error sending model data:", error);
     }

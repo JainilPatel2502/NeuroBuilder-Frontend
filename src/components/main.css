@@ -4,23 +4,59 @@
 .neuron {
   width: 50px;
   height: 50px;
-  margin: 20px;
-  background-color: cornflowerblue;
-  border-radius: 100px;
+  margin: 15px;
+  background-color: #6366f1;
+  border-radius: 50px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2);
+  transition: all 0.3s ease;
 }
+
+.neuron:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+}
+
 .fl {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .container {
   display: flex;
   position: relative;
   width: 100%;
   height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 400px;
+  gap: 40px;
+}
+
+.container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
 .networksvg {
   position: absolute;
@@ -29,12 +65,24 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
+  z-index: 1;
 }
 
 .networksvg line {
-  stroke: cornflowerblue;
-  stroke-width: 3;
-  opacity: 0.2;
+  stroke: #6366f1;
+  stroke-width: 2;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.lay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  min-width: 120px;
 }
 #top-controls {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;
@@ -84,7 +132,6 @@
 }
 
 #top-controls .control .select::after {
-  class: "material-icons";
   content: "arrow_drop_down";
   color: #999;
   font-family: "Material Icons";
