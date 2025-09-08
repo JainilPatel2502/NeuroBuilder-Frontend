@@ -1,12 +1,17 @@
-Here’s a polished **README.md** draft for your **Neuro Builder** project:
 
----
 
 # 🧠 Neuro Builder
 
 An **AI-powered GUI tool** that allows users to **design, train, and monitor neural networks** without writing code.
 
 With **Neuro Builder**, you bring your own preprocessed dataset, define the problem type (classification or regression), and interactively design a neural network using a simple playground interface. Training runs in real-time with live logs and performance tracking.
+
+---
+# Demo Video
+
+https://github.com/user-attachments/assets/ea6bf56a-2142-4dd9-8eda-9da3c8569b37
+
+
 
 ---
 
@@ -28,7 +33,6 @@ With **Neuro Builder**, you bring your own preprocessed dataset, define the prob
 - 📡 **Live Training Logs**
 
   - Monitor training progress in real-time.
-  - View **loss curves** and performance metrics dynamically.
 
 - 🎛️ **Fully Customizable**
 
@@ -69,38 +73,11 @@ With **Neuro Builder**, you bring your own preprocessed dataset, define the prob
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** Streamlit (Interactive UI)
-- **Backend:** PyTorch / TensorFlow (Neural network training)
+- **Frontend:** Reactjs (Interactive UI)
+- **Backend:** PyTorch  (Neural network training)
 - **Logging:** WebSockets for real-time logs
 
----
 
-## 📌 Requirements
-
-- Python 3.9+
-- Required libraries:
-
-  ```bash
-  pip install streamlit torch torchvision tensorflow scikit-learn pandas matplotlib
-  ```
-
----
-
-## ▶️ Run Locally
-
-```bash
-# Clone repository
-git clone https://github.com/your-username/neuro-builder.git
-cd neuro-builder
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the app
-streamlit run app.py
-```
-
----
 
 ## 🌟 Future Enhancements
 
@@ -110,17 +87,3 @@ streamlit run app.py
 - 🤖 AutoML mode for automatic hyperparameter tuning
 
 ---
-
-## 🙌 Contributing
-
-Contributions are welcome! Feel free to open issues and submit pull requests.
-
----
-
-## 📜 License
-
-MIT License – free to use, modify, and distribute.
-
----
-
-Would you like me to **write this README with emojis and section dividers (modern style)**, or keep it **minimal and professional** for GitHub?
