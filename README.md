@@ -86,4 +86,6 @@ https://github.com/user-attachments/assets/ea6bf56a-2142-4dd9-8eda-9da3c8569b37
 - ☁️ Cloud integration for heavy training
 - 🤖 AutoML mode for automatic hyperparameter tuning
 
+## Backend Repo
+https://github.com/JainilPatel2502/NeuroBuilder-Backend
 ---
