@@ -9,14 +9,23 @@ function Layer({
   index,
   setActivationsPerLayer,
   setInitializationPerLayer,
-
   maxNeuron,
+  disabledActivations = new Set(),
 }) {
   const [neurons, setNeurons] = useState(1);
   const [activationFunction, setActivationFunction] = useState("ReLU");
   const [intialization, setInitialization] = useState("Normalized");
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [showMenu, setShowMenu] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+
+  const handleActivationSelect = (func) => {
+    setActivationFunction(func);
+    setToastMessage("Activation function  selected for layer ");
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+  };
 
   const handleRightClick = (e) => {
     e.preventDefault();
@@ -48,7 +57,7 @@ function Layer({
         return updated;
       });
     },
-    [neurons, index, setNeuronsPerLayer, intialization, activationFunction]
+    [neurons, index, setNeuronsPerLayer, intialization, activationFunction],
   );
   useEffect(
     function () {
@@ -58,7 +67,7 @@ function Layer({
         return updated;
       });
     },
-    [activationFunction, index, setActivationsPerLayer]
+    [activationFunction, index, setActivationsPerLayer],
   );
 
   useEffect(
@@ -69,20 +78,31 @@ function Layer({
         return updated;
       });
     },
-    [index, intialization, setInitializationPerLayer]
+    [index, intialization, setInitializationPerLayer],
   );
 
   return (
-    <div onContextMenu={handleRightClick} onClick={handleClick} className="lay">
-      <Counter neurons={neurons} setNeurons={setNeurons} />
-      <Box neurons={neurons} maxNeuron={maxNeuron} />
-      <RightClick
-        menuPosition={menuPosition}
-        showMenu={showMenu}
-        setActivationFunction={setActivationFunction}
-        setInitialization={setInitialization}
-      />
-    </div>
+    <>
+      {showToast && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#222] border border-[#444] text-gray-200 px-4 py-2 rounded shadow-2xl text-sm z-50 animate-fade-in-up">
+          {toastMessage}
+        </div>
+      )}
+      <div
+        onContextMenu={handleRightClick}
+        onClick={handleClick}
+        className="lay"
+      >
+        <Box neurons={neurons} maxNeuron={maxNeuron} setNeurons={setNeurons} />
+        <RightClick
+          menuPosition={menuPosition}
+          showMenu={showMenu}
+          setActivationFunction={handleActivationSelect}
+          setInitialization={setInitialization}
+          disabledActivations={disabledActivations}
+        />
+      </div>
+    </>
   );
 }
 

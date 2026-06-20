@@ -10,6 +10,7 @@ function NeuralNet({
   setInitializationPerLayer,
   setRegularizationPerLayer,
   maxNeuron,
+  disabledActivations,
 }) {
   const { layer } = useNN();
   const [connections, setConnections] = useState([]);
@@ -105,6 +106,7 @@ function NeuralNet({
           setActivationsPerLayer={setActivationsPerLayer}
           setInitializationPerLayer={setInitializationPerLayer}
           maxNeuron={maxNeuron}
+          disabledActivations={disabledActivations}
         />
       ))}
     </div>

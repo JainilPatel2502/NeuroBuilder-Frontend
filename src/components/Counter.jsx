@@ -1,7 +1,7 @@
 import React from "react";
 function Counter({ neurons, setNeurons }) {
   function handleInc(e) {
-    setNeurons(e.target.value);
+    setNeurons(Number(e.target.value));
   }
   return (
     <div className="flex items-center bg-slate-800/50 border border-slate-700/50 rounded-lg overflow-hidden backdrop-blur-sm">
